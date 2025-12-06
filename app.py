@@ -18,7 +18,9 @@ st.write("Upload a leaf image to detect: **Healthy, Rust, Red Rot, Blight**")
 def load_model():
     MODEL_PATH = os.path.join(os.path.dirname(__file__), "sugarcane_cnn.h5")
     model = tf.keras.models.load_model(MODEL_PATH)
-return model
+    return model   # ✅ properly indented
+
+# Load the model
 model = load_model()
 
 # Class Labels
@@ -64,6 +66,7 @@ if uploaded_file is not None:
         }
 
         st.warning(f"💡 Recommended Action: {remedies[result]}")
+
 
 
 
