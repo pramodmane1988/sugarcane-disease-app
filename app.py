@@ -3,6 +3,8 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 import numpy as np
 from PIL import Image
+import os
+import tensorflow as tf
 
 st.set_page_config(page_title="Sugarcane Disease Detector", layout="centered")
 
@@ -14,8 +16,9 @@ st.write("Upload a leaf image to detect: **Healthy, Rust, Red Rot, Blight**")
 # ---------------------------
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("sugarcane_cnn.h5")
-    return model
+    MODEL_PATH = os.path.join(os.path.dirname(__file__), "sugarcane_cnn.h5")
+    model = tf.keras.models.load_model(MODEL_PATH)
+return model
 model = load_model()
 
 # Class Labels
@@ -61,6 +64,7 @@ if uploaded_file is not None:
         }
 
         st.warning(f"💡 Recommended Action: {remedies[result]}")
+
 
 
 
