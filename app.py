@@ -13,13 +13,15 @@ st.write("Upload a leaf image to detect: **Healthy, Rust, Red Rot, Blight**")
 # ---------------------------
 # Load Model
 # ---------------------------
+import os
+import streamlit as st
+import tensorflow as tf
+
 @st.cache_resource
 def load_model():
-    import os
-    import tensorflow as tf
     MODEL_PATH = os.path.join(os.path.dirname(__file__), "sugarcane_cnn.h5")
     model = tf.keras.models.load_model(MODEL_PATH)
-    return model
+    return model   # ✅ properly indented
 
 # Load the model
 model = load_model()
@@ -67,6 +69,7 @@ if uploaded_file is not None:
         }
 
         st.warning(f"💡 Recommended Action: {remedies[result]}")
+
 
 
 
